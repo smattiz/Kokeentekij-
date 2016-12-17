@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.BorderPane?>
+
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="kokeentekija.KokeenTekijaController">
+   <center>
+      <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <left>
+            <Button fx:id="EtsiButton" mnemonicParsing="false" onMouseClicked="#Etsi" text="Etsi!" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets left="5.0" right="10.0" top="25.0" />
+               </BorderPane.margin>
+            </Button>
+         </left>
+         <right>
+            <Label text="Kokeen nimi" BorderPane.alignment="CENTER">
+               <BorderPane.margin>
+                  <Insets right="4.0" top="25.0" />
+               </BorderPane.margin>
+            </Label>
+         </right>
+         <bottom>
+            <Button fx:id="TeeKoeButton" mnemonicParsing="false" onAction="#teeKoe" text="Tee meille koe!" BorderPane.alignment="CENTER" />
+         </bottom>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <left>
+                  <Label text="Kys. Lkm" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets top="25.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </left>
+               <center>
+                  <TextField fx:id="kysymysLKMLabel" onAction="#kysymysLKM" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="10.0" top="25.0" />
+                     </BorderPane.margin>
+                  </TextField>
+               </center>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </center>
+   <left>
+      <TextField fx:id="kysymyksetLabel" editable="false" promptText="esimerkki.txt" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets left="4.0" />
+         </BorderPane.margin>
+      </TextField>
+   </left>
+   <right>
+      <TextField fx:id="KoeNimiLabel" onInputMethodTextChanged="#NimeaKoe" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets right="4.0" />
+         </BorderPane.margin>
+      </TextField>
+   </right>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Ohjelma">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Sulje" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Apua">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Tietoja" />
+                  <MenuItem mnemonicParsing="false" text="Kuinka käytän?" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+</BorderPane>
