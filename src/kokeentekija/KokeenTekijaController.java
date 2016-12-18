@@ -10,6 +10,7 @@ import javafx.stage.FileChooser;
 
 public class KokeenTekijaController {
 
+
     @FXML
     private Button EtsiButton;
 
@@ -27,13 +28,14 @@ public class KokeenTekijaController {
 
     @FXML
     String Etsi() throws IOException {
+    	
     	FileChooser fc= new FileChooser();
 		fc.setTitle("Valitse avattava tiedosto");
 		fc.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("Text files","*.txt")); //vain.txt-tiedostot
 		
-		File avattuFilu= fc.showOpenDialog(EtsiButton.getScene().getWindow());	//getScenejne, koska tarvitte Parent Windowsin toimiakseen
+		File avattuFilu= fc.showOpenDialog(TeeKoeButton.getScene().getWindow());	//getScenejne, koska tarvitte Parent Windowsin toimiakseen
 		if(avattuFilu != null) {
-			kysymyksetLabel.setText(avattuFilu.getName());
+		//	kysymyksetLabel.setText(avattuFilu.getName());
 			
 		}
 		return avattuFilu.getAbsolutePath();

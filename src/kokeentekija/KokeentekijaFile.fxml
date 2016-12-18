@@ -6,26 +6,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.BorderPane?>
 
-
-<BorderPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.40" fx:controller="kokeentekija.KokeenTekijaController">
+<BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kokeentekija.KokeenTekijaController">
    <center>
       <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <left>
-            <Button fx:id="EtsiButton" mnemonicParsing="false" onMouseClicked="#Etsi" text="Etsi!" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets left="5.0" right="10.0" top="25.0" />
-               </BorderPane.margin>
-            </Button>
-         </left>
-         <right>
-            <Label text="Kokeen nimi" BorderPane.alignment="CENTER">
-               <BorderPane.margin>
-                  <Insets right="4.0" top="25.0" />
-               </BorderPane.margin>
-            </Label>
-         </right>
          <bottom>
-            <Button fx:id="TeeKoeButton" mnemonicParsing="false" onAction="#teeKoe" text="Tee meille koe!" BorderPane.alignment="CENTER" />
+            <Button fx:id="TeeKoeButton" mnemonicParsing="false" onAction="#teeKoe" text="Etsi kysymykset ja tee Koe!" BorderPane.alignment="CENTER" />
          </bottom>
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
@@ -47,20 +32,6 @@
          </center>
       </BorderPane>
    </center>
-   <left>
-      <TextField fx:id="kysymyksetLabel" editable="false" promptText="esimerkki.txt" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets left="4.0" />
-         </BorderPane.margin>
-      </TextField>
-   </left>
-   <right>
-      <TextField fx:id="KoeNimiLabel" onInputMethodTextChanged="#NimeaKoe" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets right="4.0" />
-         </BorderPane.margin>
-      </TextField>
-   </right>
    <top>
       <MenuBar BorderPane.alignment="CENTER">
         <menus>
@@ -78,4 +49,11 @@
         </menus>
       </MenuBar>
    </top>
+   <left>
+      <Label text="Uuden kokeen nimi" BorderPane.alignment="CENTER">
+         <graphic>
+            <TextField fx:id="KoeNimiLabel" onAction="#NimeaKoe" prefHeight="25.0" prefWidth="165.0" />
+         </graphic>
+      </Label>
+   </left>
 </BorderPane>
