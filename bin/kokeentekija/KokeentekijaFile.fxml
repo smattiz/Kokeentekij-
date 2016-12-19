@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -9,25 +10,22 @@
 <BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="kokeentekija.KokeenTekijaController">
    <center>
       <BorderPane prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-         <bottom>
-            <Button fx:id="TeeKoeButton" mnemonicParsing="false" onAction="#teeKoe" text="Etsi kysymykset ja tee Koe!" BorderPane.alignment="CENTER" />
-         </bottom>
          <center>
             <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-               <left>
-                  <Label text="Kys. Lkm" BorderPane.alignment="CENTER">
-                     <BorderPane.margin>
-                        <Insets top="25.0" />
-                     </BorderPane.margin>
-                  </Label>
-               </left>
                <center>
-                  <TextField fx:id="kysymysLKMLabel" onAction="#kysymysLKM" BorderPane.alignment="CENTER">
+                  <TextField fx:id="kysymysLKMLabel" BorderPane.alignment="CENTER">
                      <BorderPane.margin>
-                        <Insets right="10.0" top="25.0" />
+                        <Insets left="20.0" right="10.0" />
                      </BorderPane.margin>
                   </TextField>
                </center>
+               <right>
+                  <Label text="Kysymysten lukumäärä" BorderPane.alignment="CENTER">
+                     <BorderPane.margin>
+                        <Insets right="4.0" />
+                     </BorderPane.margin>
+                  </Label>
+               </right>
             </BorderPane>
          </center>
       </BorderPane>
@@ -37,13 +35,13 @@
         <menus>
           <Menu mnemonicParsing="false" text="Ohjelma">
             <items>
-              <MenuItem mnemonicParsing="false" text="Sulje" />
+              <MenuItem fx:id="menuLopeta" mnemonicParsing="false" onAction="#suljeOhjelma" text="Sulje" />
             </items>
           </Menu>
           <Menu mnemonicParsing="false" text="Apua">
             <items>
-              <MenuItem mnemonicParsing="false" text="Tietoja" />
-                  <MenuItem mnemonicParsing="false" text="Kuinka käytän?" />
+              <MenuItem fx:id="tietojaMenuButton" mnemonicParsing="false" onAction="#naytaTietoja" text="Tietoja" />
+                  <MenuItem fx:id="menuKäyttö" mnemonicParsing="false" onAction="#naytaOhje" text="Kuinka käytän?" />
             </items>
           </Menu>
         </menus>
@@ -56,4 +54,11 @@
          </graphic>
       </Label>
    </left>
+   <bottom>
+      <Button fx:id="TeeKoeButton" mnemonicParsing="false" onAction="#teeKoe" text="Etsi kysymykset ja tee Koe!" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+      </Button>
+   </bottom>
 </BorderPane>

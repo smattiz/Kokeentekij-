@@ -57,19 +57,22 @@ public class Koe {
 	return meid‰nLista;	
  }
  
+ 
  /**
   * Tehd‰‰n meid‰n satunnaiset kysymykset halutusta Vectorista
   * @param kysymysLista vector, joka sis‰lt‰‰ kysymykset
+  * TODO: Pit‰‰ tarkistaa, ettei ole samoja kysymyksi‰...
   */
- private static  Vector<String> teeRandomKysymykset(Vector<String> kysymysLista) {
+ private static  Vector<String> teeRandomKysymykset(Vector<String> kysymysLista, int kysLKM) {
 	Random rng= new Random();
 	Vector<String> meid‰nKysymykset= new Vector<String>();
-	for(int i=0; i<=10; i++) {
+	for(int i=0; i<=kysLKM; i++) {
 		meid‰nKysymykset.add(kysymysLista.get(rng.nextInt(kysymysLista.size()))); 
 	}
 	return meid‰nKysymykset;
  }
 	
+ 
 /**
  * Kokeentekij‰, joka kutsuu aliohjelmia halutussa j‰rjestyksess‰ lopulta tulostellen tiedostoon meid‰n uuden kokeen
  * @param filePath Tiedoston polku merkkijonona
@@ -80,7 +83,7 @@ public static  void teeUusiKoe(String filePath, String koeNimi,int kyslkm) throw
 	Koe koe=new Koe(koeNimi);
 	File koeKysymyksetFile=new File(filePath); //muutetaan Filu Stringiksi, helpompi k‰sitell‰ n‰in leikkim‰ll‰
 	Vector<String> kysymykset= filuListaan(koeKysymyksetFile);
-	koe.koeKysymykset=teeRandomKysymykset(kysymykset);	
+	koe.koeKysymykset=teeRandomKysymykset(kysymykset,kyslkm);	
 	tulostaTiedostoon(koe,kyslkm);
 }
 
