@@ -69,9 +69,35 @@ public class Koe {
 	for(int i=0; i<=kysLKM; i++) {
 		meid‰nKysymykset.add(kysymysLista.get(rng.nextInt(kysymysLista.size()))); 
 	}
+	meid‰nKysymykset=tarkistaTuplaKysymykset(meid‰nKysymykset,kysymysLista);
 	return meid‰nKysymykset;
  }
 	
+ 
+ /**
+  * Tarkistetaan "kuplalajittelulla" mahdolliset tuplakysymykset ja vaihdetaan ne. Riskin‰ on, ett‰ tuplakysymykset lis‰‰ntyy
+  * @param kysymykset Jo arvotut kysymykset, joista tarkistamme tuplat
+  * @param kysymysLista Alkuper‰inen lista, josta arvottiin ensimm‰iset kysymykykset
+  * @return
+  */
+ private static Vector<String> tarkistaTuplaKysymykset(Vector<String> kysymykset, Vector<String> kysymysLista) {
+	 Random rng=new Random();
+	 for(int i=0; i<kysymykset.size(); i++) {
+		 
+		 for(int j=1; j<kysymykset.size(); j++) {
+			 
+			 String s1=kysymykset.get(i); //Muutetaan Stringeiski vertailun helpottamiseksi
+			 String s2=kysymykset.get(j);
+			 	if(s1.equals(s2)) {
+			 		
+			 		kysymykset.remove(j);
+			 		kysymykset.add(j, kysymysLista.get(rng.nextInt(kysymysLista.size())));
+			 	}
+		 }
+	 }
+	return kysymykset;	 
+ }
+ 
  
 /**
  * Kokeentekij‰, joka kutsuu aliohjelmia halutussa j‰rjestyksess‰ lopulta tulostellen tiedostoon meid‰n uuden kokeen
@@ -79,7 +105,7 @@ public class Koe {
  * @param koeNimi Tulevan koetiedoston nimi
  * @throws IOException Jos tietovirrassa on ongelmia
  */
-public static  void teeUusiKoe(String filePath, String koeNimi,int kyslkm) throws IOException {
+ public static  void teeUusiKoe(String filePath, String koeNimi,int kyslkm) throws IOException {
 	Koe koe=new Koe(koeNimi);
 	File koeKysymyksetFile=new File(filePath); //muutetaan Filu Stringiksi, helpompi k‰sitell‰ n‰in leikkim‰ll‰
 	Vector<String> kysymykset= filuListaan(koeKysymyksetFile);
@@ -94,7 +120,7 @@ public static  void teeUusiKoe(String filePath, String koeNimi,int kyslkm) throw
  * @param kyslkm tallennettavien kysymysten LKM
  * @throws IOException Jos tietovirta katkeaa, heitt‰‰ Poikkeuksen
  */
-private static void tulostaTiedostoon(Koe koe, int kyslkm) throws IOException {
+ private static void tulostaTiedostoon(Koe koe, int kyslkm) throws IOException {
 	BufferedWriter bf;
 	bf = new BufferedWriter(new FileWriter(koe.nimi+".txt"));
 	for(int i=0; i<kyslkm; i++) {
