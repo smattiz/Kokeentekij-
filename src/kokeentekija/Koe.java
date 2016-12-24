@@ -15,8 +15,9 @@ import javafx.scene.control.Alert.AlertType;
 
 /**
  * Koe-luokka, jossa teemme kokeen, jota sitten manipuloimme
- * @author Matti Keskiniemi 18.12.2016
- * TODO: TÄMÄ PITÄÄ MUUTTA KUNNON OLIOKSI
+ * A class used to make our new Exam and manipulate given questions 
+ * @author Matti Keskiniemi, If you have improvement ideas, please do contact me :)
+ * @version 1.0 Completed 24.12.2016 as a christmas gift
  */
 public class Koe {
 	private String nimi;
@@ -29,10 +30,10 @@ public class Koe {
 	
 	
 	/**
-	 * Asetetaan meidän File rivi riviltä  Vectoriin, että se saadaan käyttöön
+	 * Asetetaan meidän File rivi riviltä  Vectoriin, että se saadaan käyttöön / Users Questions line per line to Vector
 	 * @param string file Meidän filu, jota halutaan hyödyntää
 	 */
- public  static Vector<String> filuListaan(File ourFile) { //Voidaan myös ihan luoda olio, joka meillä on
+ public  static Vector<String> filuListaan(File ourFile) {  
 	 Vector<String> meidänLista= new Vector<String>();
 	 
 	 try {
@@ -76,9 +77,9 @@ public class Koe {
  
  /**
   * Tarkistetaan "kuplalajittelulla" mahdolliset tuplakysymykset ja vaihdetaan ne. Riskinä on, että tuplakysymykset lisääntyy
-  * @param kysymykset Jo arvotut kysymykset, joista tarkistamme tuplat
-  * @param kysymysLista Alkuperäinen lista, josta arvottiin ensimmäiset kysymykykset
-  * @return
+  * @param kysymykset Jo arvotut kysymykset, joista tarkistamme tuplat /already randomised questions
+  * @param kysymysLista Alkuperäinen lista, josta arvottiin ensimmäiset kysymykykset / original questions vector
+  * @return 
   */
  private static Vector<String> tarkistaTuplaKysymykset(Vector<String> kysymykset, Vector<String> kysymysLista) {
 	 Random rng=new Random();
@@ -86,7 +87,7 @@ public class Koe {
 		 
 		 for(int j=1; j<kysymykset.size(); j++) {
 			 
-			 String s1=kysymykset.get(i); //Muutetaan Stringeiski vertailun helpottamiseksi
+			 String s1=kysymykset.get(i); //Muutetaan Stringeiksi vertailun helpottamiseksi
 			 String s2=kysymykset.get(j);
 			 	if(s1.equals(s2)) {
 			 		
@@ -101,9 +102,10 @@ public class Koe {
  
 /**
  * Kokeentekijä, joka kutsuu aliohjelmia halutussa järjestyksessä lopulta tulostellen tiedostoon meidän uuden kokeen
- * @param filePath Tiedoston polku merkkijonona
- * @param koeNimi Tulevan koetiedoston nimi
- * @throws IOException Jos tietovirrassa on ongelmia
+ * @param filePath Tiedoston polku merkkijonona / path of file, as a String
+ * @param koeNimi Tulevan koetiedoston nimi / our new Exams name
+ * @throws IOException Jos tietovirrassa on ongelmia If there's problems in data stream E.g connection lost etc
+ * TODO: Make this better and more stable
  */
  public static  void teeUusiKoe(String filePath, String koeNimi,int kyslkm) throws IOException {
 	Koe koe=new Koe(koeNimi);
@@ -116,9 +118,9 @@ public class Koe {
 
 /**
  * Tallenetaan Koe .txt-tiedostona
- * @param koe tallenettava olio
- * @param kyslkm tallennettavien kysymysten LKM
- * @throws IOException Jos tietovirta katkeaa, heittää Poikkeuksen
+ * @param koe tallenettava olio / Our Exam we want to make
+ * @param kyslkm tallennettavien kysymysten LKM / Amount of questions wanted in exam, since we don't want it in object, althought it could be good idea
+ * @throws IOException Jos tietovirta katkeaa, heittää Poikkeuksen / If datastream is interrupted by any way
  */
  private static void tulostaTiedostoon(Koe koe, int kyslkm) throws IOException {
 	BufferedWriter bf;

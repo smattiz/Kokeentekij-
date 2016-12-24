@@ -66,6 +66,10 @@ public class KokeenTekijaController {
 
     
     @FXML
+    /**
+     * "Etsi kysymykset ja Luo Koe-napin toiminta, joka myös käytännössä aktivoi Koe-luokan
+     * @throws IOException Jos koekysymystiedoston luku häiriintyy
+     */
     void teeKoe() throws IOException {
     	String filePath=Etsi();
     	String lkm= kysymysLKMLabel.getText();
@@ -74,7 +78,11 @@ public class KokeenTekijaController {
     }
     
     
+  
     @FXML
+    /**
+     * FXML-elementti, joka aktivoi Ohjeen näyttämisen.
+     */
     void naytaOhje() {
     	Alert help=new Alert(AlertType.INFORMATION);
     	help.setHeaderText("Ohje");
