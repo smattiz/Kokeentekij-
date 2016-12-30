@@ -15,7 +15,7 @@
          <center>
             <BorderPane prefHeight="100.0" prefWidth="644.0" BorderPane.alignment="CENTER">
                <left>
-                  <TextField fx:id="KoeNimiLabel" editable="false" onAction="#NimeaKoe" BorderPane.alignment="CENTER" />
+                  <TextField fx:id="KoeNimiLabel" editable="true" onAction="#NimeaKoe" BorderPane.alignment="CENTER" />
                </left>
                <right>
                   <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
